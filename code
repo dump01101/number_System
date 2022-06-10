@@ -1,0 +1,229 @@
+def introduction():
+    return f"This is a number system converter. Input your number. Input number from 1 - 4 to choose what type of number you want to convert and input number from 1 - 3 to choos into what base do you want to convert your inputted number.\n"
+
+
+def decimalException():
+    exception = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
+
+    return exception
+
+
+def binaryException():
+    exception = ['2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
+
+    return exception
+
+
+def octalException():
+    exception = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
+
+    return exception
+
+
+def hexadecimalException():
+    exception = ['g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
+
+    return exception
+
+
+def decimal(num, choice):
+    not_in_decimal = decimalException()
+
+    for i in num:
+        if i in not_in_decimal:
+            return f"\nDecimal number contains only 0 - 9"
+            break
+
+    if num[0]:
+        return f"\nDecimal number does not start with 0"
+    else:
+        if choice == 1:
+            # dec to bin
+            binary = bin(int(num))
+            return f"\nBinary: {binary[2:]}"
+        elif choice == 2:
+            # dec to oct
+            octal = oct(int(num))
+            return f"\nOctal: {octal[2:]}"
+        elif choice == 3:
+            # dec to hex
+            hexadecimal = hex(int(num))
+            return f"\nHexadecimal: {hexadecimal[2:]}"
+        else:
+            return f"\nInput the acceptable number only"
+
+
+def binary(num, choice):
+    not_in_binary = binaryException()
+    for i in num:
+        if i in not_in_binary:
+            return "\nBinary contains 0 and 1 only"
+            break
+
+    if choice == 1:
+        # binary to decimal
+        start = len(num)
+        dec = 0
+
+        for i in num:
+            dec += (int(i) * (2**(start - 1)))
+            start -= 1
+
+        return f"\nDecimal: {dec}"
+    elif choice == 2:
+        # binary to octal
+        start = len(num)
+        dec = 0
+
+        for i in num:
+            dec += (int(i) * (2**(start - 1)))
+            start -= 1
+
+        octal = oct(dec)
+        return f"\nOctal: {octal[2:]}"
+    elif choice == 3:
+        # binary to hexadecimal
+        start = len(num)
+        dec = 0
+
+        for i in num:
+            dec += (int(i) * (2**(start - 1)))
+            start -= 1
+
+        hexadecimal = hex(dec)
+        return f"\nHexadecimal: {hexadecimal[2:]}"
+    else:
+        return f"\nInput the acceptable number only"
+
+
+def octal(num, choice):
+    not_in_oct = octalException()
+
+    for i in num:
+        if i in not_in_oct:
+            return "\nOctal contains 0 - 7 only"
+            break
+
+    if choice == 1:
+        # octal to decimal
+        start = len(num)
+        oct = 0
+
+        for i in num:
+            oct += (int(i) * (8**(start - 1)))
+            start -= 1
+
+        return f"\nDecimal: {oct}"
+    elif choice == 2:
+        # octal to binary
+        start = len(num)
+        oct = 0
+
+        for i in num:
+            oct += (int(i) * (8**(start - 1)))
+            start -= 1
+
+        return f"\nBinary: {bin(oct)[2:]}"
+    elif choice == 3:
+        # octal to hexadecimal
+        start = len(num)
+        oct = 0
+
+        for i in num:
+            oct += (int(i) * (8**(start - 1)))
+            start -= 1
+
+        return f"\nHexadecimal: {hex(oct)[2:]}"
+    else:
+        return f"\nInput the acceptable number only"
+
+
+def hexadecimal(num, choice):
+    not_in_hexadecimal = hexadecimalException()
+    accepted_letters = {'a': 10, 'b': 11, 'c': 12, 'd': 13, 'e': 14, 'f': 15, 'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+
+    for i in num:
+        if i in not_in_hexadecimal:
+            return "\nHexadecimal contains 0 - 9 and A - F"
+            break
+
+    if choice == 1:
+        # hexadecimal to decimal
+        start = len(num)
+        hexadecimal = 0
+
+        for i in num:
+            if i in accepted_letters.keys():
+                hexadecimal += (int(accepted_letters.get(i)) * (16**(start - 1)))
+            else:
+                hexadecimal += (int(i) * (16**(start - 1)))
+            start -= 1
+
+        return f"\nDecimal: {hexadecimal}"
+    elif choice == 2:
+        # hexadecimal to binary
+        start = len(num)
+        hexadecimal = 0
+
+        for i in num:
+            if i in accepted_letters.keys():
+                hexadecimal += (int(accepted_letters.get(i)) * (16**(start - 1)))
+            else:
+                hexadecimal += (int(i) * (16**(start - 1)))
+            start -= 1
+
+        return f"\nBinary: {bin(hexadecimal)[2:]}"
+    elif choice == 3:
+        # hexadecimal to octal
+        start = len(num)
+        hexadecimal = 0
+
+        for i in num:
+            if i in accepted_letters.keys():
+                hexadecimal += (int(accepted_letters.get(i)) * (16**(start - 1)))
+            else:
+                hexadecimal += (int(i) * (16**(start - 1)))
+            start -= 1
+
+        return f"\nOctal: {oct(hexadecimal)[2:]}"
+    else:
+        return f"\nInput the acceptable number only"
+
+
+def main():
+    intro = introduction()
+
+    num = input("Enter the number: ")
+
+    type_input_num = eval(input(f"\nBase of your inputted number.\n1: Decimal\n2: Binary\n3: Octal\n4: Hexadecimal\n> "))
+
+    if type_input_num == 1:
+        into_type_x = eval(input(f"\nInto what base do you want to convert your inputted number.\n1: Binary\n2: Octal\n3: Hexadecimal\n> "))
+
+        dec = decimal(num, into_type_x)
+
+        print(dec)
+    elif type_input_num == 2:
+        into_type_x = eval(input(f"\nInto what base do you want to convert your inputted number.\n1: Decimal\n2: Octal\n3: Hexadecimal\n> "))
+
+        bin = binary(num, into_type_x)
+
+        print(bin)
+    elif type_input_num == 3:
+        into_type_x = eval(input(f"\nInto what base do you want to convert your inputted number.\n1: Decimal\n2: Binary\n3: Hexadecimal\n> "))
+
+        oct = octal(num, into_type_x)
+
+        print(oct)
+    elif type_input_num == 4:
+        into_type_x = eval(input(f"\nInto what base do you want to convert your inputted number.\n1: Decimal\n2: Binary\n3: Octal\n> "))
+
+        hex = hexadecimal(num, into_type_x)
+
+        print(hex)
+    else:
+        print("Input 1 - 4 only.")
+
+
+if __name__ == "__main__":
+    main()
